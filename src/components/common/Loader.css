@@ -1,0 +1,8 @@
+.my__loader.ui.segment {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  border: 0;
+  margin: 50px 0;
+}
