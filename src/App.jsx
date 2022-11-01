@@ -7,9 +7,17 @@ import { getVideos } from './services/youtube'
 class App extends React.Component {
   state = { videos: [], selectedVideo: null }
 
+  componentDidMount() {
+    this.onTermSubmit('alen walker')
+  }
+
   onTermSubmit = async (term) => {
     const response = await getVideos(term)
-    this.setState({ videos: response.data.items })
+
+    this.setState({
+      videos: response.data.items,
+      selectedVideo: response.data.items[0],
+    })
   }
 
   onVideoSelect = (video) => {
