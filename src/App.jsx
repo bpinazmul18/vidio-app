@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   onVideoSelect = (video) => {
-    console.log('Video selected', video)
+    this.setState({ selectedVideo: video })
   }
 
   render() {
