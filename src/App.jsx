@@ -4,19 +4,25 @@ import VideoList from './components/VideoList'
 import { getVideos } from './services/youtube'
 
 class App extends React.Component {
-  state = { videos: [] }
+  state = { videos: [], selectedVideo: null }
 
   onTermSubmit = async (term) => {
     const response = await getVideos(term)
-    console.log(response)
     this.setState({ videos: response.data.items })
+  }
+
+  onVideoSelect = (video) => {
+    console.log('Video selected', video)
   }
 
   render() {
     return (
       <div className="ui container">
         <SearchBar onFormSubmit={this.onTermSubmit} />
-        <VideoList videos={this.state.videos} />
+        <VideoList
+          onVideoSelect={this.onVideoSelect}
+          videos={this.state.videos}
+        />
       </div>
     )
   }
